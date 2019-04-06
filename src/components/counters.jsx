@@ -11,15 +11,21 @@ class Counters extends Component {
 			{ id: 4, value: 0},
 		]
 	}
+
+	handleDelete = () => {
+		console.log('Event handler called');
+		
+	};
+
 	render() { 
 		return (
 		<div>{this.state.counters.map(counter =>
 			//this sets props value and selected on the counter component
-			<Counter key={counter.id} value={counter.value}>
-				{/* this will show up as children in the ocunter component, obviously this is a simplified
-				version of this, but how you can pass stuff to child */}
-				<h4>Counter #{counter.id}</h4>
-			</Counter>
+			<Counter 
+				key={counter.id} 
+				onDelete={this.handleDelete} 
+				value={counter.value} 
+				id={counter.id}/>
 			)}
 		</div>
 		);

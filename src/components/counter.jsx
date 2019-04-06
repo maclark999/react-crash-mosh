@@ -5,19 +5,22 @@ class Counter extends Component {
 		value: this.props.value
 	};
 
-	render() {
-		console.log('props', this.props);
-		
+	render() {		
 		// compiles to React.createElement
 		return (
 			//react.fragment seems to be like template in vue, prevents unnecessary additional elements
 			<div>
-				{this.props.children}
+				<h3>Counter #{this.props.id}</h3>
 				<span className={this.getBadgeClasses()}>{this.formatCount()}</span>
 				<button
 					onClick={() => this.handleIncrement({id: 1})}
 					className="btn btn-secondary btn-sm">
 					Increment
+				</button>
+				<button
+					onClick={this.props.onDelete}
+					className="btn btn-danger btn-sm m-2">
+					Delete
 				</button>
 			</div>
 		);
