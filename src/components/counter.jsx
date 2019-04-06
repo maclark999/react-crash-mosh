@@ -2,8 +2,7 @@ import React, { Component } from "react";
 
 class Counter extends Component {
 	state = {
-		count: 0,
-		tags: ["tag1", "tag2", "tag3"]
+		count: 0
 	};
 
 	render() {
@@ -17,10 +16,6 @@ class Counter extends Component {
 					className="btn btn-secondary btn-sm">
 					Increment
 				</button>
-				{/* this works because javascript does need the two sides to be booleans, the second part is truthy */}
-				{/* and js returns the second operand */}
-				{this.state.tags.length === 0 && "Please Create a New Tag"}
-				{this.renderTags()}
 			</div>
 		);
 	}
@@ -39,18 +34,6 @@ class Counter extends Component {
 	handleIncrement = product => {
 		//have to explicitly tell react what has changed
 		this.setState({ count: this.state.count + 1});
-	}
-
-	renderTags() {
-		if (this.state.tags.length === 0) return <p>There are no tags!</p>;
-
-		return (
-			<ul>
-				{this.state.tags.map(tag => (
-					<li key={tag}>{tag}</li>
-				))}
-			</ul>
-		);
 	}
 
 	getBadgeClasses() {
