@@ -13,7 +13,7 @@ class Counter extends Component {
 			<div>
 				<span className={this.getBadgeClasses()}>{this.formatCount()}</span>
 				<button
-					onClick={this.handleIncrement}
+					onClick={() => this.handleIncrement({id: 1})}
 					className="btn btn-secondary btn-sm">
 					Increment
 				</button>
@@ -36,7 +36,7 @@ class Counter extends Component {
 	//apparently this may still be the experimental version of setting the this context using .bind like in above
 	// this means the method resides on each instance of the class and not on the prototype and testing may be harder
 	//I still think it looks cleaner this way though, so I'm going with it
-	handleIncrement = () => {
+	handleIncrement = product => {
 		//have to explicitly tell react what has changed
 		this.setState({ count: this.state.count + 1});
 	}
