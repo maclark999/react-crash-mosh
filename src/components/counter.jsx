@@ -6,30 +6,29 @@ class Counter extends Component {
 		tags: ["tag1", "tag2", "tag3"]
 	};
 
+	renderTags() {
+		if (this.state.tags.length === 0) return <p>There are no tags!</p>;
+
+		return (
+			<ul>
+				{this.state.tags.map(tag => (
+					<li key={tag}>{tag}</li>
+				))}
+			</ul>
+		);
+	}
+
 	render() {
 		// compiles to React.createElement
 		return (
 			//react.fragment seems to be like template in vue, prevents unnecessary additional elements
-			<React.Fragment>
-				<ul>
-					{this.state.tags.map(tag => (
-						<li key={tag}>{tag}</li>
-					))}
-				</ul>
-			</React.Fragment>
+			<div>
+				{/* this works because javascript does need the two sides to be booleans, the second part is truthy */}
+				{/* and js returns the second operand */}
+				{this.state.tags.length === 0 && "Please Create a New Tag"}
+				{this.renderTags()}
+			</div>
 		);
-	}
-
-	getBadgeClasses() {
-		let classes = "badge m-2 badge-";
-		classes += this.state.count === 0 ? "warning" : "primary";
-		return classes;
-	}
-
-	formatCount() {
-		const { count } = this.state;
-		//jsx expressions are like normal js objects
-		return count === 0 ? "Zero" : count;
 	}
 }
 
