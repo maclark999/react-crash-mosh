@@ -25,8 +25,20 @@ class Counter extends Component {
 		);
 	}
 
-	handleIncrement() {
-		console.log("button clicked");
+	// //this is called before mounted for the component
+	// constructor() {
+	// 	super();
+	// 	// https://medium.freecodecamp.org/react-binding-patterns-5-approaches-for-handling-this-92c651b5af56
+	// https://medium.com/@nikolalsvk/loosing-bind-this-in-react-8637ebf372cf
+	// 	this.handleIncrement = this.handleIncrement.bind(this);
+	// }
+
+	//apparently this may still be the experimental version of setting the this context using .bind like in above
+	// this means the method resides on each instance of the class and not on the prototype and testing may be harder
+	//I still think it looks cleaner this way though, so I'm going with it
+	handleIncrement = () => {
+		//have to explicitly tell react what has changed
+		this.setState({ count: this.state.count + 1});
 	}
 
 	renderTags() {
