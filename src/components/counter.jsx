@@ -5,7 +5,8 @@ class Counter extends Component {
 	// 	value: this.props.counter.value
 	// };
 
-	render() {		
+	render() {
+		const { onDelete, onIncrement, counter} = this.props;
 		// compiles to React.createElement
 		return (
 			//react.fragment seems to be like template in vue, prevents unnecessary additional elements
@@ -13,12 +14,12 @@ class Counter extends Component {
 				<span className={this.getBadgeClasses()}>{this.formatCount()}</span>
 				<button
 					// needs to be an arrow function because passing an argument
-					onClick={() => this.props.onIncrement(this.props.counter)}
+					onClick={() => onIncrement(counter)}
 					className="btn btn-secondary btn-sm">
 					Increment
 				</button>
 				<button
-					onClick={() => this.props.onDelete(this.props.counter.id)}
+					onClick={() => onDelete(counter.id)}
 					className="btn btn-danger btn-sm m-2">
 					Delete
 				</button>
