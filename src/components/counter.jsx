@@ -10,7 +10,6 @@ class Counter extends Component {
 		return (
 			//react.fragment seems to be like template in vue, prevents unnecessary additional elements
 			<div>
-				<h3>Counter #{this.props.counter.id}</h3>
 				<span className={this.getBadgeClasses()}>{this.formatCount()}</span>
 				<button
 					onClick={() => this.props.onIncrement(this.props.counter)}
